@@ -1,0 +1,63 @@
+---
+import Hamburger from "./Hamburger.tsx";
+import Navigation from "./Navigation.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+import { getImage } from "astro:assets";
+const { is404Page = false } = Astro.props;
+
+const favicon_avif = await getImage({
+  src: "https://raw.githubusercontent.com/yashkumar2603/PhotoCDN/refs/heads/main/uploads/logo.png",
+  alt: "favicon",
+  width: "640",
+  height: "640",
+  decoding: "async",
+  format: "avif",
+});
+---
+
+<header class="mb-[20px] mt-[-10px]">
+  <nav class="flex items-center justify-between w-full h-[40px]">
+    {
+      !is404Page && (
+        <div class="flex items-center h-[40px]">
+          <a href="/" class="block">
+            <img
+              class="favicon w-[40px] h-[40px]"
+              src={favicon_avif.src}
+              alt="Home"
+              width="30"
+              height="30"
+            />
+          </a>
+        </div>
+      )
+    }
+    <section
+      class="flex justify-center font-overpass-mono items-center h-screen"
+    >
+      <h1 class="text-2xl font-bold">TheD3500</h1>
+    </section>
+    <div class="flex items-center h-[30px] gap-2">
+      {
+        !is404Page && (
+          <>
+            <div class="flex items-center justify-center h-[30px] w-[30px]">
+              <ThemeToggle />
+            </div>
+            <div class="flex items-center justify-center h-[30px] w-[30px]">
+              <Hamburger client:load />
+            </div>
+          </>
+        )
+      }
+    </div>
+  </nav>
+  {
+    !is404Page && (
+      <div class="absolute right-0 mt-2">
+        <Navigation />
+      </div>
+    )
+  }
+  <slot />
+</header>
