@@ -29,7 +29,7 @@ const metaImage = image
       src: image,
       alt: alt,
       inferSize: true,
-      height: "720",
+      height: "3467",
       decoding: "async",
       format: "webp",
     })
@@ -49,22 +49,22 @@ const metaImage = image
   <div class="md:grid md:grid-cols-[1fr,2fr] gap-4 md:px-56" data-pagefind-body>
     {
       image ? (
-        <div>
+        <div class="flex flex-col items-center">
           <div class="md:h-[480px] h-[360px]">
             <Image
               src={image}
               alt={alt}
               inferSize
-              height={720}
+              height={3467}
               decoding="async"
               format="avif"
               loading="lazy"
-              class="object-contain h-full"
+              class="object-contain h-full w-full"
               data-pagefind-meta="image[src]"
             />
           </div>
           <div>
-            <h1 class="uppercase font-overpass-mono text-xl text-center w-full m-2">
+            <h1 class="uppercase font-overpass-mono text-xl text-center w-full m-4">
               {title}
             </h1>
             <div>
